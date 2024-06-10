@@ -57,15 +57,17 @@ const calculator = {
       default:
         result = "Error";
     }
-    this.displayValue = Number.parseFloat(result.toFixed(4));
+    this.displayValue = Number.parseFloat(result.toFixed(4)).toString();
     this.renderValue();
   },
 
   clickOperator(o) {
-    if (this.enteredValues.length === 1) {
+    if (this.operator && this.displayValue !== "") {
+      this.enteredValues.push(this.displayValue);
       this.clickEquals();
+    } else {
+      this.enteredValues.push(this.displayValue);
     }
-    this.enteredValues.push(this.displayValue);
     this.operator = o;
     this.displayValue = "";
   },
@@ -95,4 +97,4 @@ operators.forEach((e) =>
 );
 equalsBtn.addEventListener("click", () => calculator.clickEquals());
 
-calculator.renderVa;
+calculator.renderValue();
