@@ -57,7 +57,7 @@ const calculator = {
       default:
         result = "Error";
     }
-    this.displayValue = result.toFixed(4).toString();
+    this.displayValue = Number.parseFloat(result.toFixed(4));
     this.renderValue();
   },
 
